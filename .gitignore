@@ -1,1 +1,4 @@
 catboost_info
+
+# TODO Completarlo con: .venv, .env, extensiones de archivos binarios, __pychache__, .ipynb 
+*.png

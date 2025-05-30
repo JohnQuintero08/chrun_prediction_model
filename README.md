@@ -6,6 +6,8 @@ This project presents the development of a machine learning model to predict cus
 
 The project follows a complete workflow including data cleaning, preprocessing, model training, optimization, and pipeline creation for future data prediction. Additionally, a **lift curve analysis** was performed to identify the customers most likely to churn, allowing for targeted retention offers.
 
+
+
 ## Process Overview
 
 1. **Data Cleaning**:
@@ -46,7 +48,11 @@ The final model selected is an **XGBoost Classifier**. It was optimized through 
 
 By selecting the top 10% of customers most likely to churn, the model predicts with approximately **81% certainty** that these customers would leave the company without intervention, enabling targeted retention strategies.
 
-## Tools and Libraries
+## Tools and Libraries 
+
+![Esquema ER](relaciones_tablas.png)
+
+<!-- TODO Yo borraría esto para evitar redundancias e inconsistencias futuras -->
 
 - **Python**
 - **pandas**, **numpy** – Data manipulation
@@ -59,3 +65,9 @@ By selecting the top 10% of customers most likely to churn, the model predicts w
 For making new predictions, a processing pipeline has been created in the file **process_predict_pipeline.py**.  
 To use it, you must provide the four datasets (contracts, internet services, phone services, and personal data) structured similarly to the original format.  
 By calling the function **pipeline_processing()**, the script will preprocess the data and output the predictions directly to the console.
+
+<!-- TODO Explicitar línea de código en la terminal para ejecutar el pipeline -->
+
+```sh
+python ...
+```
