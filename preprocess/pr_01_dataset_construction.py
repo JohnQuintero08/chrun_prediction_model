@@ -55,3 +55,8 @@ def df_creation(route):
     df = pd.read_csv(route)
     df.columns = column_name_to_lowercase(df)
     return df
+
+def drop_not_important_features(df):
+    df_c = df.copy()
+    df_c = df_c.reset_index(drop=True).drop(['customerid', 'begindate'], axis=1)
+    return df_c

@@ -1,5 +1,5 @@
 from preprocess.pr_01_dataset_construction import df_creation, contract_df_transform, merge_df, boolean_yes_no_transform
-from preprocess.pr_01_dataset_construction import fill_null_values
+from preprocess.pr_01_dataset_construction import fill_null_values, drop_not_important_features
 
 df_contract = df_creation('data/input/contract.csv')
 df_internet = df_creation('data/input/internet.csv')
@@ -14,4 +14,5 @@ df = boolean_yes_no_transform(df)
 df.to_feather('data/intermediate/preprocess_df.feather')
 
 df = fill_null_values(df)
+df = drop_not_important_features(df)
 df.to_feather('data/intermediate/preprocess_df_notnull.feather')
