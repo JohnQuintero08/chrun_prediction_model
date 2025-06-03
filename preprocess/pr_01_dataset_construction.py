@@ -49,6 +49,7 @@ def boolean_yes_no_transform(df, yes_no_columns = yes_no_columns):
 def fill_null_values(df):
     df_c = df.copy()
     df_c = df.fillna(0)
+    return df_c
 
 def df_creation(route):
     df = pd.read_csv(route)

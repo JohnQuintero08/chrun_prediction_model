@@ -1,4 +1,5 @@
-from preprocess.pr_01_dataset_construction import df_creation, contract_df_transform, merge_df, boolean_yes_no_transform, fill_null_values
+from preprocess.pr_01_dataset_construction import df_creation, contract_df_transform, merge_df, boolean_yes_no_transform
+from preprocess.pr_01_dataset_construction import fill_null_values
 
 df_contract = df_creation('data/input/contract.csv')
 df_internet = df_creation('data/input/internet.csv')
