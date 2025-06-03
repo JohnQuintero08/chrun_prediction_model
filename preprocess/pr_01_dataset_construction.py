@@ -34,17 +34,21 @@ def merge_df(df_contract_m, df_internet_m, df_personal_m, df_phone_m):
     return df_merge
 
 
-def boolean_yes_no_transform(df):
+yes_no_columns = ['paperlessbilling', 'onlinesecurity', 'onlinebackup','deviceprotection', 'techsupport', 'streamingtv', 'streamingmovies', 'partner', 'dependents', 'multiplelines']
+
+def boolean_yes_no_transform(df, yes_no_columns = yes_no_columns):
     df_merge = df.copy()    
     dict_yes_no = {
         'Yes' : 1,
         'No' : 0,
     }
-    yes_no_columns = ['paperlessbilling', 'onlinesecurity', 'onlinebackup','deviceprotection', 'techsupport', 'streamingtv', 'streamingmovies', 'partner', 'dependents', 'multiplelines']
-    
     for col in yes_no_columns:
         df_merge[col] = df_merge[col].map(dict_yes_no)
     return df_merge
+
+def fill_null_values(df):
+    df_c = df.copy()
+    df_c = df.fillna(0)
 
 def df_creation(route):
     df = pd.read_csv(route)
