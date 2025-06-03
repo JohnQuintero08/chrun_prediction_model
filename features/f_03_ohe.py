@@ -14,5 +14,3 @@ def test_ordinal_encoding():
     new_df_valid = ohe_encoding(df_valid)
     new_df_test = ohe_encoding(df_test)
     return new_df_train, new_df_valid, new_df_test
-
-new_df_train, new_df_valid, new_df_test = test_ordinal_encoding()

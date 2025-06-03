@@ -27,5 +27,4 @@ def test_standard_scaler():
     new_df_test = standard_scaler(df_test, df_train)
     return new_df_train, new_df_valid, new_df_test
 
-new_df_train, new_df_valid, new_df_test = test_standard_scaler()
 
