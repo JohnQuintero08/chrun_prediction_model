@@ -5,15 +5,19 @@ from features.f_01_train_test_split import split_df_for_model
 
 categorical_variables = ['type', 'paymentmethod', 'internetservice', 'gender']
 
-def train_ordinal_encoder(df_train):
+def train_ordinal_encoder(df_train, is_saved=False):
     categorical_encoder = OrdinalEncoder()
     categorical_encoder.fit(df_train[categorical_variables])
-    # joblib.dump(categorical_encoder, 'features/encoders/ordinal_encoder.pkl')
+    if is_saved:
+        joblib.dump(categorical_encoder, 'features/encoders/ordinal_encoder.pkl')
     return categorical_encoder
 
-def ordinal_encoder(df, df_train):
+def ordinal_encoder(df, df_train, has_encoder=False):
     df_c = df.copy()
-    encoder = train_ordinal_encoder(df_train)
+    if not has_encoder:
+        encoder = train_ordinal_encoder(df_train)
+    else:
+        encoder = joblib.load('features/encoders/ordinal_encoder.pkl')
     var_encoded = pd.DataFrame(encoder.transform(df_c[categorical_variables]), 
                                 columns=df_c[categorical_variables].columns)
     df_c = df_c.reset_index()
