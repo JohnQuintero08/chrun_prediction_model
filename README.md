@@ -6,8 +6,6 @@ This project presents the development of a machine learning model to predict cus
 
 The project follows a complete workflow including data cleaning, preprocessing, model training, optimization, and pipeline creation for future data prediction. Additionally, a **lift curve analysis** was performed to identify the customers most likely to churn, allowing for targeted retention offers.
 
-
-
 ## Process Overview
 
 1. **Data Cleaning**:
@@ -41,6 +39,15 @@ The project follows a complete workflow including data cleaning, preprocessing, 
 
 The final model selected is an **XGBoost Classifier**. It was optimized through hyperparameter tuning and feature selection to achieve robust performance across validation and test datasets.
 
+![Model performance with train data](files/plots/graph_1.PNG)
+![Model performance with validation data](files/plots/graph_2.PNG)
+
+## - Final Results:
+
+A lift curve analysis was conducted to determine how much better the model was compared to random selection. It was found that selecting the top 10% of customers most likely to churn (as predicted by the model) yielded six times more positive churn predictions than random selection.
+
+![Lift curve performance](files/plots/graph_3.PNG)
+
 **Model Performance**:
 
 - **F1 Score**: 0.69 - 0.71
@@ -48,26 +55,12 @@ The final model selected is an **XGBoost Classifier**. It was optimized through 
 
 By selecting the top 10% of customers most likely to churn, the model predicts with approximately **81% certainty** that these customers would leave the company without intervention, enabling targeted retention strategies.
 
-## Tools and Libraries 
+## Tools and Libraries
 
-![Esquema ER](relaciones_tablas.png)
-
-<!-- TODO Yo borraría esto para evitar redundancias e inconsistencias futuras -->
-
-- **Python**
-- **pandas**, **numpy** – Data manipulation
-- **scikit-learn** – Modeling and evaluation
-- **matplotlib** – Visualization
-- **XGBoost**, **LightGBM**, **CatBoost** – Machine learning models
+Find them in requirements.txt
 
 ## Prediction Pipeline
 
-For making new predictions, a processing pipeline has been created in the file **process_predict_pipeline.py**.  
-To use it, you must provide the four datasets (contracts, internet services, phone services, and personal data) structured similarly to the original format.  
-By calling the function **pipeline_processing()**, the script will preprocess the data and output the predictions directly to the console.
-
-<!-- TODO Explicitar línea de código en la terminal para ejecutar el pipeline -->
-
-```sh
-python ...
-```
+For making new predictions, a processing pipeline has been created in the file **pipeline/pp_01_execution.py**.  
+To use it, you must provide the four datasets (contracts, internet, phone, and personal) structured similarly to the original format in the folder **pipeline/data/**.  
+By calling the function **exe(num_clients)**, the script will preprocess the data and output the predictions directly to the console, replace the variable num_clients with the number es clients that you want to have as the most possible to chrun.
