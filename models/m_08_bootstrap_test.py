@@ -5,15 +5,9 @@ from features.f_01_train_test_split import split_df_for_model
 from features.f_02_ordinal_encoding import ordinal_encoder
 from features.f_05_upsampling import upsampling_dataframe
 from features.f_06_features_target_split import features_target_split
+from features.f_07_drop_columns_model import drop_columns
 from models.m_01_model_evaluation import metrics_results, format_simple_results
 random_seed = 42
-
-columns_to_drop = [
-  'seniorcitizen',
-  'dependents',
-  'deviceprotection',
-  'partner',
-  'gender']
 
 def load_model(location):
     return joblib.load(location)
@@ -30,7 +24,8 @@ def boostrap_random_state_evaluation(model,df_to_bootstrap, model_name = 'Classi
         list_df_mod = []
         
         for data in list_df:
-            df_new = ordinal_encoder(data, None, True).drop(columns_to_drop, axis=1)
+            df_new = ordinal_encoder(data, None, True)
+            df_new = drop_columns(df_new)
             list_df_mod.append(df_new)
         
         print(f'Prueba con número rándom state {num}')
