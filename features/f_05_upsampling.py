@@ -32,4 +32,3 @@ def test_upsampling():
     new_df_train = upsampling_dataframe(df_train)
     return new_df_train
 
-test_upsampling()
