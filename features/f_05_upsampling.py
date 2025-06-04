@@ -31,3 +31,5 @@ def test_upsampling():
     print(df_train.shape)
     new_df_train = upsampling_dataframe(df_train)
     return new_df_train
+
+test_upsampling()
